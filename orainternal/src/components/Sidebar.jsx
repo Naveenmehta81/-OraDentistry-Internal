@@ -1,7 +1,6 @@
-// src/components/Sidebar.jsx
-// Install: npm install react-icons
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+// react icon
 import {
   MdDashboard,
   MdPeople,
@@ -16,10 +15,12 @@ import {
   MdKeyboardArrowRight,
   MdNotifications,
   MdSearch,
+  MdAddCard,
+  MdEngineering,
 } from "react-icons/md";
+
 import { RiShieldUserLine } from "react-icons/ri";
 
-/* ─── nav config ─────────────────────────────────────────── */
 const menuGroups = [
   {
     label: "Overview",
@@ -37,6 +38,20 @@ const menuGroups = [
         icon: MdPeople,
         badge: "12",
         color: "#0ea5e9",
+      },
+      {
+        name: "Clinics",
+        path: "/ClinicsModule",
+        icon: MdAddCard,
+        badge: 4,
+        color: "#f0b643",
+      },
+      {
+        name: "Designers",
+        path: "/Designers",
+        icon: MdEngineering,
+        badge: null,
+        color: "#4374f0",
       },
     ],
   },
@@ -103,7 +118,6 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* MOBILE HEADER */}
       <header
         className="font-sans fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-4 h-14
         bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm md:hidden"
@@ -115,10 +129,11 @@ export default function Sidebar() {
           >
             {open ? <MdClose size={20} /> : <MdMenu size={20} />}
           </button>
-          <span className="font-bold text-slate-800 text-[15px]">
+          <span className="select-none cursor-default font-bold text-slate-800 text-[15px]">
             Admin Portal
           </span>
         </div>
+
         <div className="flex items-center gap-2">
           <button className="relative w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200">
             <MdNotifications size={20} />
@@ -168,10 +183,10 @@ export default function Sidebar() {
 
           {!collapsed && (
             <div className="flex-1 overflow-hidden">
-              <p className="font-bold text-slate-800 text-[14.5px] tracking-tight leading-tight">
+              <p className="select-none cursor-default font-bold text-slate-800 text-[14.5px] tracking-tight leading-tight">
                 Admin Portal
               </p>
-              <p className="text-[10px] text-slate-400 font-semibold tracking-widest uppercase">
+              <p className="select-none cursor-default text-[10px] text-slate-400 font-semibold tracking-widest uppercase">
                 Management Suite
               </p>
             </div>
@@ -208,8 +223,8 @@ export default function Sidebar() {
                 placeholder="Search anything…"
                 className="bg-transparent border-none outline-none text-[13px] text-slate-700 w-full placeholder:text-slate-400"
               />
-              <kbd className="text-[10px] text-slate-400 bg-slate-200 px-1.5 py-0.5 rounded-md font-mono leading-none">
-                ⌘K
+              <kbd className="select-none cursor-default  text-[10px] text-slate-400 bg-slate-200 p-2 m-2 rounded-md font-mono leading-none">
+                ⌘
               </kbd>
             </div>
           </div>
@@ -220,7 +235,7 @@ export default function Sidebar() {
           {menuGroups.map((group) => (
             <div key={group.label}>
               {!collapsed ? (
-                <p className="text-[10px] font-bold tracking-[0.09em] uppercase text-slate-300 px-2.5 mt-4 mb-1.5">
+                <p className="select-none cursor-default  text-[10px] font-bold tracking-[0.09em] uppercase text-slate-300 px-2.5 mt-4 mb-1.5">
                   {group.label}
                 </p>
               ) : (
@@ -280,13 +295,14 @@ export default function Sidebar() {
           ))}
         </nav>
 
-        {/* NOTIFICATION CARD (Animation Removed) */}
+        {/* NOTIFICATION CARD  */}
         {!collapsed && (
           <div className="mx-3 mb-3 p-3 rounded-xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-white to-sky-50 shrink-0">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-sm border border-indigo-100 shrink-0">
                 <MdNotifications size={16} className="text-indigo-500" />
               </div>
+              {/* this is hardcode need to show real case and alert  */}
               <div className="flex-1 overflow-hidden">
                 <p className="text-[12.5px] font-semibold text-slate-700 leading-tight">
                   3 new alerts
@@ -295,7 +311,6 @@ export default function Sidebar() {
                   2 cases need review
                 </p>
               </div>
-              {/* Pulse animation removed here */}
               <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
             </div>
           </div>
@@ -313,14 +328,12 @@ export default function Sidebar() {
                 style={{
                   background: "linear-gradient(135deg,#6366f1,#06b6d4)",
                 }}
-              >
-                A
-              </div>
+              ></div>
               <div className="flex-1 overflow-hidden">
-                <p className="text-[13px] font-semibold text-slate-800 truncate leading-tight">
+                <p className="select-none cursor-default text-[13px] font-semibold text-slate-800 truncate leading-tight">
                   Alex Johnson
                 </p>
-                <p className="text-[11px] text-slate-400 truncate">
+                <p className="select-none cursor-default text-[11px] text-slate-400 truncate">
                   Super Admin
                 </p>
               </div>
@@ -347,7 +360,7 @@ export default function Sidebar() {
               ${collapsed ? "md:px-0 md:justify-center" : ""}
             `}
           >
-            <span className="w-[34px] h-[34px] rounded-lg flex items-center justify-center shrink-0 bg-red-100 text-red-500 group-hover:bg-red-200">
+            <span className="w-\[34px\] h-\[34px\] rounded-lg flex items-center justify-center shrink-0 bg-red-100 text-red-500 group-hover:bg-red-200">
               <MdLogout size={17} />
             </span>
             {!collapsed && <span>Logout</span>}

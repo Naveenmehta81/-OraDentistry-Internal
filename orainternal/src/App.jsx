@@ -8,6 +8,8 @@ import Cases from "./pages/Cases.jsx";
 import Settings from "./pages/Settings.jsx";
 import AuditLogs from "./pages/AuditLogs.jsx";
 import StlViewer from "./pages/StlViewer.jsx";
+import ClinicsModule from "./pages/Clinicsmanagement.jsx";
+import Designers from "./pages/Designers.jsx";
 
 function App() {
   return (
@@ -21,10 +23,11 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/users" element={<Users />} />
             <Route path="/cases" element={<Cases />} />
-
+            <Route path="/ClinicsModule" element={<ClinicsModule />} />
             <Route path="/Settings" element={<Settings />} />
             <Route path="/stl-viewer" element={<StlViewer />} />
             <Route path="/audit-logs" element={<AuditLogs />} />
+            <Route path="/Designers" element={<Designers />} />
           </Route>
         </Routes>
       </BrowserRouter>
